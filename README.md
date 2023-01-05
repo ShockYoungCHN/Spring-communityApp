@@ -1,5 +1,5 @@
 # community
-##Intro
+## Intro
 A Spring community project focusing on backend code.
 Backend implemented by SpringMVC+SpringBoot+Hibernate+Kafka+ElasticSearch+Redis.
 Frontend implemented by Thymeleaf.
