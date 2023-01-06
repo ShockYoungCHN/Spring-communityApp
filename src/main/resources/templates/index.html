@@ -172,12 +172,18 @@
                     <li class="page-item">
                         <a class="page-link" th:href="@{${page.path}(current=1)}">Home</a>
                     </li>
+
                     <li th:class="|page-item ${page.current==1?'disabled':''}|">
-                        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">Prev</a></li>
+                        <a class="page-link" th:href="@{${page.path}(current=${page.current/-1})}">Prev</a>
+                    </li>
+
+
                     <li th:class="|page-item ${i==page.current?'active':''}|"
                         th:each="i:${#numbers.sequence(page.from,page.to)}">
                         <a class="page-link" href="#" th:text="${i}">1</a>
                     </li>
+
+
                     <li th:class="|page-item ${page.current==page.total?'disabled':''}|">
                         <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">Next</a>
                     </li>
