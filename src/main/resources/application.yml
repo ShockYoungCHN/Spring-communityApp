@@ -1,0 +1,9 @@
+spring:
+  mail:
+    host: smtp.office365.com
+    port: 587
+    username: SamuraiYoung@outlook.com
+    password: test
+    properties:
+      smtp.auth: true
+      mail.smtp.starttls.enable: true

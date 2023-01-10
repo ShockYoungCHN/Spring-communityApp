@@ -32,8 +32,8 @@ public class User {
     @Column(name="activation_code")
     private String activationCode;
 
-    @Column(name="header_url")
-    private String headerUrl;
+    @Column(name="avatar_url")
+    private String avatarUrl;
 
     @Column(name="create_time")
     private Date createTime;
@@ -102,12 +102,12 @@ public class User {
         this.activationCode = activationCode;
     }
 
-    public String getHeaderUrl() {
-        return headerUrl;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setHeaderUrl(String headerUrl) {
-        this.headerUrl = headerUrl;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public Date getCreateTime() {
@@ -129,7 +129,7 @@ public class User {
                 ", type=" + type +
                 ", status=" + status +
                 ", activationCode='" + activationCode + '\'' +
-                ", headerUrl='" + headerUrl + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
                 ", createTime=" + createTime +
                 '}';
     }

@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
         String hql="from User u where u.username= :user_name";
         Query query=entityManager.createQuery(hql);
         query.setParameter("user_name",username);
-        return (User)query.getSingleResult();
+        return (User)query.getResultList().stream().findFirst().orElse(null);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
         String hql="from User u where u.email= :email";
         Query query=entityManager.createQuery(hql);
         query.setParameter("email",email);
-        return (User)query.getSingleResult();
+        return (User) query.getResultList().stream().findFirst().orElse(null);
     }
 
     @Override
@@ -59,10 +59,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int updateHeader(int id, String headerUrl) {
+    public int updateAvatar(int id, String avatarUrl) {
         try {
             User u=entityManager.find(User.class,id);
-            u.setHeaderUrl(headerUrl);
+            u.setAvatarUrl(avatarUrl);
             entityManager.persist(u);
             return 1;
         }
@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao {
     public int updatePassword(int id, String password) {
         try {
             User u=entityManager.find(User.class,id);
-            u.setHeaderUrl(password);
+            u.setAvatarUrl(password);
             entityManager.persist(u);
             return 1;
         }

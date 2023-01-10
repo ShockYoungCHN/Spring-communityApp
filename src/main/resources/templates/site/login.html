@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/global.css" th:href="@{/css/global.css}"/>
+    <link rel="stylesheet" href="../css/login.css" th:href="@{/css/login.css}"/>
+    <title>CoDunity-Login</title>
+</head>
+<body>
+<div class="nk-container">
+    <!-- header -->
+    <header class="bg-dark sticky-top" th:replace="index :: header">
+        <div class="container">
+            <!-- nav-bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <!-- logo -->
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- function -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ml-3 btn-group-vertical">
+                            <a class="nav-link" href="../index.html">首页</a>
+                        </li>
+                        <li class="nav-item ml-3 btn-group-vertical">
+                            <a class="nav-link position-relative" href="letter.html">消息<span class="badge badge-danger">12</span></a>
+                        </li>
+                        <li class="nav-item ml-3 btn-group-vertical">
+                            <a class="nav-link" href="register.html">注册</a>
+                        </li>
+                        <li class="nav-item ml-3 btn-group-vertical">
+                            <a class="nav-link" href="login.html">登录</a>
+                        </li>
+                        <li class="nav-item ml-3 btn-group-vertical dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="http://images.nowcoder.com/head/1t.png" class="rounded-circle"
+                                     style="width:30px;"/>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-center" href="profile.html">个人主页</a>
+                                <a class="dropdown-item text-center" href="setting.html">账号设置</a>
+                                <a class="dropdown-item text-center" href="login.html">退出登录</a>
+                                <div class="dropdown-divider"></div>
+                                <span class="dropdown-item text-center text-secondary">nowcoder</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Search -->
+                    <form class="form-inline my-2 my-lg-0" action="search.html">
+                        <input class="form-control mr-sm-2" type="search" aria-label="Search"/>
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- content -->
+    <div class="main">
+        <div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
+            <h3 class="text-center text-info border-bottom pb-3">Login</h3>
+            <form class="mt-5" method="post" th:action="@{/login}">
+                <div class="form-group row">
+                    <label for="username" class="col-sm-2 col-form-label text-right">Account:</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:class="| form-control ${usernameMsg !=null ?'is-valid':''} |"
+                               th:value="${param.username}"
+                               id="username" name="username" placeholder="Please enter your account" required>
+                        <div class="invalid-feedback" th:text="${usernameMsg}">
+                            The account does not exist!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <label for="password" class="col-sm-2 col-form-label text-right">密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password"
+                               th:class="|form-control ${passwordMsg!=null ?'is-valid':''} |"
+                               th:value="${param.password}"
+                               id="password" name="password" placeholder="Please enter your password" required>
+                        <div class="invalid-feedback" th:text="${passwordMsg}">
+                            Password length cannot be less than 8 bits
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <label for="verifycode" class="col-sm-2 col-form-label text-right">Captcha:</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:class="|form-control ${codeMsg!=null ?'is-valid':''}|"
+                               id="verifycode" name="code" placeholder="Please enter the Captcha">
+                        <div class="invalid-feedback" th:text="${codeMsg}">
+                            Captcha is incorrect
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img th:src="@{/kaptcha}" id="kaptcha" style="width:100px;height:40px;"
+                             class="mr-2"/>
+                        <a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">Refresh</a>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <input type="checkbox" id="remember-me" name="rememberme" checked="checked"
+                               th:checked="rememberme">
+                        <label class="form-check-label" for="remember-me">Remember me</label>
+                        <a href="forget.html" class="text-danger float-right">Forget the password?</a>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 text-center">
+                        <button type="submit" class="btn btn-info text-white form-control">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- tail -->
+    <footer class="bg-dark" th:replace="index::footer">
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/global.js}" type="text/javascript"></script>
+
+<script>
+    function refresh_kaptcha() {
+        const path = CONTEXT_PATH + "/kaptcha?p=" + Math.random();
+        $("#kaptcha").attr("src", path);
+    }
+</script>
+</body>
+</html>

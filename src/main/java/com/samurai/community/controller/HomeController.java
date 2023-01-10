@@ -24,14 +24,14 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/index")
+    @GetMapping({"/index","/"})
     public String getIndexPage(
             Model model,
             Page page,
             @RequestParam(name = "orderMode", defaultValue = "0") int orderMode) {
 
         page.setRows(discussPostService.findDiscussPostRows(0));
-        page.setPath("/?orderMode=" + orderMode);
+        page.setPath("/index?orderMode=" + orderMode);
         List<DiscussPost> list =
                 discussPostService.findDiscussPosts(
                         0, page.getOffset(), page.getLimit(), orderMode);
@@ -49,6 +49,7 @@ public class HomeController {
                 discussPosts.add(map);
             }
         }
+
         model.addAttribute("discussPosts", discussPosts);
         model.addAttribute("orderMode", orderMode);
         return "/index";

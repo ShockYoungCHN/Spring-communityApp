@@ -13,7 +13,7 @@ public interface UserDao {
 
     int updateStatus(int id, int status);
 
-    int updateHeader(int id, String headerUrl);
+    int updateAvatar(int id, String avatarUrl);
 
     int updatePassword(int id, String password);
 }
