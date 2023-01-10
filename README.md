@@ -6,6 +6,9 @@ Backend implemented by SpringMVC+SpringBoot+Hibernate+Kafka+ElasticSearch+Redis.
 
 Frontend implemented by Thymeleaf.
 
+## Account Login
+Test account is: ShockYoungCHN, password is: 123.
+
 ## Ideas for Scoping Up
 Reconfig the Controller layer using RESTful API.
 
