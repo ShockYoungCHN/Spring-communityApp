@@ -1,5 +1,6 @@
 package com.samurai.community.config;
 
+import com.samurai.community.controller.interceptor.LoginRequiredInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,9 +14,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
   @Autowired private AlphaInterceptor alphaInterceptor;
   @Autowired private LoginTicketInterceptor loginTicketInterceptor;
 
-  //    @Autowired
-/*  //    private LoginRequiredInterceptor loginRequiredInterceptor;
-
+  @Autowired
+  private LoginRequiredInterceptor loginRequiredInterceptor;
+/*
   @Autowired private MessageInterceptor messageInterceptor;
 
   @Autowired private DataInterceptor dataInterceptor;*/
@@ -31,9 +32,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         .addInterceptor(loginTicketInterceptor)
         .excludePathPatterns("/*/*.css", "/*/*.js", "/*/*.png", "/*/*.jpg", "/*/*.jpeg");
 
-  //        registry.addInterceptor(loginRequiredInterceptor)
-  //                .excludePathPatterns("/*/*.css", "/*/*.js", "/*/*.png", "/*/*.jpg",
-  // "/*/*.jpeg");
+          registry.addInterceptor(loginRequiredInterceptor)
+                  .excludePathPatterns("/*/*.css", "/*/*.js", "/*/*.png", "/*/*.jpg",
+   "/*/*.jpeg");
 
 //    registry
 //        .addInterceptor(messageInterceptor)

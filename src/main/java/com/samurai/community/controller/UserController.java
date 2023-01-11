@@ -3,6 +3,7 @@ package com.samurai.community.controller;
 import com.samurai.community.Service.UserService;
 import com.samurai.community.Util.CommunityUtil;
 import com.samurai.community.Util.HostHolder;
+import com.samurai.community.annotation.LoginRequired;
 import com.samurai.community.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -40,6 +41,7 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @LoginRequired
     @GetMapping("/setting")
     public String getSettingPage(){
         return "/site/setting";
@@ -47,6 +49,7 @@ public class UserController {
 
     /* A method which can be used to upload the files to local directory, an alternative is using online Image Hosting */
     // @LoginRequired
+    @LoginRequired
     @PostMapping("/upload")
     public String uploadAvatar(MultipartFile avatarImage, Model model) {
         if (avatarImage == null) {
@@ -78,7 +81,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    /* deprecated method */
     @GetMapping("/avatar/{fileName}")
     public void getAvatar(@PathVariable("fileName") String fileName, HttpServletResponse response) {
         // Server storage path
