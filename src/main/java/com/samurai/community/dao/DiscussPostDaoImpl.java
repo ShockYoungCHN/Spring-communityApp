@@ -33,6 +33,7 @@ public class DiscussPostDaoImpl implements DiscussPostDao{
         Query query = entityManager.createQuery(hql);
         if(userId != 0) {
             hql += "AND user_id = :user_id";
+            query = entityManager.createQuery(hql);
             query.setParameter("user_id",userId);
         }
         return ((Number)query.getSingleResult()).intValue();
@@ -40,8 +41,13 @@ public class DiscussPostDaoImpl implements DiscussPostDao{
 
     @Override
     public int insertDiscussPost(DiscussPost discussPost) {
-        entityManager.merge(discussPost);
-        return 0;
+        try{
+            entityManager.merge(discussPost);
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }
     }
 
     @Override
@@ -50,8 +56,11 @@ public class DiscussPostDaoImpl implements DiscussPostDao{
     }
 
     @Override
-    public int updateCommentCount(int id, int commentCount) {
-        return 0;
+    public int updateCommentCount(int discussPostId, int commentCount) {
+        DiscussPost dp=entityManager.find(DiscussPost.class,discussPostId);
+        dp.setCommentCount(commentCount);
+        entityManager.detach(dp);
+        return 1;
     }
 
     @Override

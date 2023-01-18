@@ -26,10 +26,10 @@ function publish() {
             $("#hintBody").text(data.msg);
             // Show alert box
             $("#hintModal").modal("show");
-            // After 2 seconds, the alert box is automatically hidden
+            // the alert box will be automatically hidden after 2 seconds
             setTimeout(function () {
                 $("#hintModal").modal("hide");
-                // refresh the webpage
+                // refresh the webpage, data.code==0 means the posting is successful
                 if (data.code == 0) {
                     window.location.reload();
                 }

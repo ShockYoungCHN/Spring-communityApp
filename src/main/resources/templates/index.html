@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ml-3 btn-group-vertical">
-                            <a class="nav-link" th:href="@{index}">Welcome</a>
+                            <a class="nav-link" th:href="@{/index}">Welcome</a>
                         </li>
                         <li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser!=null}">
                             <a class="nav-link position-relative" href="site/letter.html"
@@ -118,7 +118,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel: </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" id="publishBtn">Publish</button>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                     </li>
 
                     <li th:class="|page-item ${page.current==1?'disabled':''}|">
-                        <a class="page-link" th:href="@{${page.path}(current=${page.current/-1})}">Prev</a>
+                        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">Prev</a>
                     </li>
 
 

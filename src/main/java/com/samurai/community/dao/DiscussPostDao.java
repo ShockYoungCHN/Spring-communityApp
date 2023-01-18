@@ -13,7 +13,7 @@ public interface DiscussPostDao {
 
     DiscussPost selectDiscussPostById(int id);
 
-    int updateCommentCount(int id, int commentCount);
+    int updateCommentCount(int discussPostId, int commentCount);
 
     int updateType(int id, int type);
 

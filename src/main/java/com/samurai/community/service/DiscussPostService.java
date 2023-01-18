@@ -1,28 +1,26 @@
-package com.samurai.community.Service;
+package com.samurai.community.service;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import com.samurai.community.util.SensitiveFilter;
 import com.samurai.community.dao.DiscussPostDao;
 import com.samurai.community.entity.DiscussPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.HtmlUtils;
 //import com.samurai.community.Util.SensitiveFilter;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class DiscussPostService {
     @Autowired
     DiscussPostDao DPDao;
 
-    //@Autowired
-    //private SensitiveFilter sensitiveFilter;
+    @Autowired
+    private SensitiveFilter sensitiveFilter;
 
 /*    @Value("${caffeine.posts.max-size}")
     private int maxSize;
@@ -92,18 +90,10 @@ public class DiscussPostService {
         return DPDao.selectDiscussPostRows(userId);
     }
 
-/*
-    */
-/**
-     * Add post
-     *
-     * @param post the post to be updated
-     * @return
-     *//*
-
+    @Transactional
     public int addDiscussPost(DiscussPost post) {
         if (post == null) {
-            throw new IllegalArgumentException("参数不能为空");
+            throw new IllegalArgumentException("Post can not be null");
         }
         // Escape HTML tags
         post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
@@ -115,52 +105,23 @@ public class DiscussPostService {
 
         return DPDao.insertDiscussPost(post);
     }
-*/
-
 
     public DiscussPost findDiscussPostById(int id) {
         return DPDao.selectDiscussPostById(id);
     }
 
-    /**
-     * Update the number of comments
-     *
-     * @param id
-     * @param commentCount
-     * @return
-     */
-    public int updateCommentCount(int id, int commentCount) {
-        return DPDao.updateCommentCount(id, commentCount);
+    public int updateCommentCount(int discussPostId, int commentCount) {
+        return DPDao.updateCommentCount(discussPostId, commentCount);
     }
 
-    /**
-     * Update post type
-     *
-     * @param id
-     * @param type
-     * @return
-     */
     public int updateType(int id, int type) {
         return DPDao.updateType(id, type);
     }
 
-    /**
-     * Update post status
-     *
-     * @param id
-     * @param status
-     * @return
-     */
     public int updateStatus(int id, int status) {
         return DPDao.updateStatus(id, status);
     }
 
-    /**
-     * Update DiscussionPost score
-     *
-     * @param id
-     * @param score
-     */
     public void updateScore(int id, double score) {
         DPDao.updateScore(id, score);
     }

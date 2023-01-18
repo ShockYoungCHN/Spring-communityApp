@@ -3,7 +3,7 @@ package com.samurai.community.entity;
 public class Page {
     // Current page number
     private int current = 1;
-    // Display upper limit
+    // upper limit of displaying entities per page
     private int limit = 10;
     // Total number of data (used to calculate the total number of pages)
     private int rows;

@@ -1,15 +1,14 @@
 package com.samurai.community;
 
-import com.samurai.community.Util.MailClient;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.samurai.community.util.MailClient;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
 
-
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@ContextConfiguration(classes = CommunityApplication.class)
 public class MailTests {
     @Autowired
     private MailClient mailClient;

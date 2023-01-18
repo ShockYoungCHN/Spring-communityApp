@@ -1,4 +1,4 @@
-package com.samurai.community.Util;
+package com.samurai.community.util;
 
 import com.samurai.community.entity.User;
 import org.springframework.stereotype.Component;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+
 @Repository
 public class UserDaoImpl implements UserDao {
     @Autowired

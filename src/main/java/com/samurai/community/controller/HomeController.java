@@ -1,10 +1,9 @@
 package com.samurai.community.controller;
 
-import com.samurai.community.Service.DiscussPostService;
-import com.samurai.community.Service.UserService;
+import com.samurai.community.service.DiscussPostService;
+import com.samurai.community.service.UserService;
 import com.samurai.community.entity.DiscussPost;
 import com.samurai.community.entity.Page;
-import com.samurai.community.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

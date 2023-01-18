@@ -1,7 +1,7 @@
-package com.samurai.community.Service;
+package com.samurai.community.service;
 
-import com.samurai.community.Util.CommunityUtil;
-import com.samurai.community.Util.MailClient;
+import com.samurai.community.util.CommunityUtil;
+import com.samurai.community.util.MailClient;
 import com.samurai.community.dao.LoginTicketDao;
 import com.samurai.community.dao.UserDao;
 import com.samurai.community.entity.LoginTicket;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static com.samurai.community.Util.CommunityConstant.*;
+import static com.samurai.community.util.CommunityConstant.*;
 
 @Repository
 public class UserService {

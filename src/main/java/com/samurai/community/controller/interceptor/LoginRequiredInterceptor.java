@@ -1,6 +1,6 @@
 package com.samurai.community.controller.interceptor;
 
-import com.samurai.community.Util.HostHolder;
+import com.samurai.community.util.HostHolder;
 import com.samurai.community.annotation.LoginRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,8 @@
 package com.samurai.community.controller;
 
 import com.google.code.kaptcha.Producer;
-import com.samurai.community.Service.UserService;
-import com.samurai.community.Util.CommunityConstant;
-import com.samurai.community.Util.CommunityUtil;
+import com.samurai.community.service.UserService;
+import com.samurai.community.util.CommunityConstant;
 import com.samurai.community.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 public class LoginController implements CommunityConstant {
@@ -38,7 +37,8 @@ public class LoginController implements CommunityConstant {
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
-    //@Autowired private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 

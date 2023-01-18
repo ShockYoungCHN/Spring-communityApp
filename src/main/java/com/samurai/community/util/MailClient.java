@@ -1,4 +1,4 @@
-package com.samurai.community.Util;
+package com.samurai.community.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

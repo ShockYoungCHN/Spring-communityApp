@@ -1,4 +1,4 @@
-package com.samurai.community.Util;
+package com.samurai.community.util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
@@ -26,8 +26,8 @@ public class CommunityUtil {
         json.put("code", code);
         json.put("msg", msg);
         if (map != null) {
-            for (String key : map.keySet()) {
-                json.put(key, map.get(key));
+            for (Map.Entry e : map.entrySet()) {
+                json.put((String) e.getKey(), e.getValue());
             }
         }
         return json.toJSONString();

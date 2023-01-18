@@ -1,16 +1,11 @@
 package com.samurai.community.controller.interceptor;
 
-import com.samurai.community.Service.UserService;
-import com.samurai.community.Util.CookieUtil;
-import com.samurai.community.Util.HostHolder;
+import com.samurai.community.service.UserService;
+import com.samurai.community.util.CookieUtil;
+import com.samurai.community.util.HostHolder;
 import com.samurai.community.entity.LoginTicket;
 import com.samurai.community.entity.User;
-import com.sun.javafx.binding.DoubleConstant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

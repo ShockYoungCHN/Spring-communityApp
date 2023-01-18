@@ -1,4 +1,4 @@
-package com.samurai.community.Util;
+package com.samurai.community.util;
 
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.StringUtils;

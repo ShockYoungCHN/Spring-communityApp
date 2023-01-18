@@ -1,21 +1,14 @@
 package com.samurai.community;
 
-import com.mysql.cj.log.Log;
-import com.samurai.community.Util.CommunityUtil;
+import org.junit.jupiter.api.Test;
 import com.samurai.community.dao.LoginTicketDao;
 import com.samurai.community.dao.UserDao;
-import com.samurai.community.entity.LoginTicket;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
 
-import javax.transaction.Transactional;
-import java.util.Date;
-
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@ContextConfiguration(classes = CommunityApplication.class)
 public class LoginTicketDaoTests {
     @Autowired
     LoginTicketDao loginTicketDao;

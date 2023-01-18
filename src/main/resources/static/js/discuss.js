@@ -1,6 +1,6 @@
 $(function () {
     $("#topBtn").click(setTop);
-    $("#wonderfulBtn").click(setWonderful);
+    $("#wonderfulBtn").click(setFeatured);
     $("#deleteBtn").click(setDelete);
 });
 
@@ -12,7 +12,7 @@ function like(btn, entityType, entityId, entityUserId, postId) {
             data = $.parseJSON(data);
             if (data.code == 0) {
                 $(btn).children("i").text(data.likeCount);
-                $(btn).children("b").text(data.likeStatus == 1 ? '已赞' : "赞");
+                $(btn).children("b").text(data.likeStatus ? "Liked" : "Like");
             } else {
                 alert(data.msg);
             }
@@ -20,7 +20,7 @@ function like(btn, entityType, entityId, entityUserId, postId) {
     );
 }
 
-// 置顶
+
 function setTop() {
     $.post(
         CONTEXT_PATH + "/discuss/top",
@@ -37,10 +37,9 @@ function setTop() {
 }
 
 
-// 加精
-function setWonderful() {
+function setFeatured() {
     $.post(
-        CONTEXT_PATH + "/discuss/wonderful",
+        CONTEXT_PATH + "/discuss/featured",
         {"id": $("#postId").val()},
         function (data) {
             data = $.parseJSON(data);
@@ -53,7 +52,7 @@ function setWonderful() {
     );
 }
 
-// 删除
+// delete
 function setDelete() {
     $.post(
         CONTEXT_PATH + "/discuss/delete",
